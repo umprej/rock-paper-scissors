@@ -1,3 +1,5 @@
+const gestures = ["rock", "paper", "scissors"];
+
 function getRandomINt(max) {
     return Math.floor(Math.random() * max);
 }
@@ -14,9 +16,11 @@ function computerPlay() {
 }
 
 function getPlayerInput() {
-    let input = window.prompt("What will you play next?");
-    input = "rock";
-    return toString(input);
+    let input = "";
+    do {
+    input = window.prompt("What will you play next?").toLowerCase();
+    } while (!gestures.includes(input));
+    return input;
 }
 
 function decideRound(playerSelection, computerSelection) {
