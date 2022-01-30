@@ -64,10 +64,12 @@ function game() {
     
     const buttons = document.querySelectorAll("button");
     let result = new Counter();
+    let scoreboard = document.querySelector(".score .counter");
 
     buttons.forEach(button => button.addEventListener('click', (event) => {
         result.adjust(playRound(button.value).winner);
-        console.log(result);    
+        console.log(result);
+        scoreboard.textContent = `YOU - ${result.playerScore} : ${result.botScore} - PC`;        
         }
     ));
 }
