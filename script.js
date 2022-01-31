@@ -11,11 +11,6 @@ class Counter {
         this.lastText = "";
     }
 
-    adjust(roundWinner) {
-        if (roundWinner == PLAYER) this.playerScore++;
-        else if (roundWinner == BOT) this.botScore++;
-    }
-
     decideRound(playerSelection, computerSelection) {
         if (playerSelection == computerSelection) {
             this.lastWinner = TIE;
@@ -25,10 +20,12 @@ class Counter {
             playerSelection == "paper" && computerSelection == "rock" ||
             playerSelection == "scissors" && computerSelection == "paper") {
             this.lastWinner = PLAYER;
+            this.playerScore++;
             this.lastText = `You win, ${playerSelection} beats ${computerSelection}!`;
         }
         else {
             this.lastWinner = BOT;
+            this.botScore++;
             this.lastText = `You lose, ${playerSelection} is beaten by ${computerSelection}!`;
         }
         return {
@@ -60,12 +57,6 @@ function computerPlay() {
     }
 }
 
-function playRound(counter, playerChoice) {
-    let player_move = playerChoice;
-    let computer_move = computerPlay();
-    return counter.decideRound(player_move, computer_move);
-}
-
 function game() {
     const buttons = document.querySelectorAll("button");
     let result = new Counter();
@@ -75,8 +66,8 @@ function game() {
 
     buttons.forEach(button => button.addEventListener('click', (event) => {
         let playerChoice = button.value;
-        result.adjust(playRound(result, playerChoice).winner);
-        console.log(result);
+        result.decideRound(playerChoice, computerPlay());
+
         scoreboard.textContent = `YOU - ${result.playerScore} : ${result.botScore} - PC`;    
         roundResult.textContent = `${result.lastText}`;
         gameResult.textContent = "";
