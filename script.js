@@ -79,6 +79,7 @@ function game() {
         console.log(result);
         scoreboard.textContent = `YOU - ${result.playerScore} : ${result.botScore} - PC`;    
         roundResult.textContent = `${result.lastText}`;
+        gameResult.textContent = "";
         
         if (result.playerScore > 4) {
             gameResult.textContent = `You were the first to 5! Congratulations!`;
