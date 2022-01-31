@@ -68,7 +68,7 @@ function game() {
         let playerChoice = button.value;
         result.decideRound(playerChoice, computerPlay());
 
-        scoreboard.textContent = `YOU - ${result.playerScore} : ${result.botScore} - PC`;    
+        scoreboard.textContent = `${result.playerScore} : ${result.botScore}`;    
         roundResult.textContent = `${result.lastText}`;
         gameResult.textContent = "";
         
