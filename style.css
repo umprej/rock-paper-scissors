@@ -18,6 +18,7 @@ body {
     flex-direction: column;
     font-family: 'Courier New', Courier, monospace;
     padding: 10px;
+    background-color: rgb(255, 252, 238);
 }
 
 h1 {
@@ -59,4 +60,27 @@ button:hover {
 .text-results {
     margin: 20px;
     font-size: 1.8rem;
+}
+
+.round-results {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 7rem;
+}
+
+.emoji {
+    font-size: 7rem;
+    min-width: 150px;
+}
+
+.emoji.versus {
+    font-size: 6rem;
+}
+
+.player-name {
+    font-size: 4rem;
+    padding: 0 0.1em;
+    /* font-weight: 900; */
+    /* margin-bottom: 1em; */
 }

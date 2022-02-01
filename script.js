@@ -57,16 +57,38 @@ function computerPlay() {
     }
 }
 
+function strToEmoji(choice) {
+    switch(choice) {
+        case "rock":
+             return "👊";
+        case "paper":
+            return "🖐";
+        case "scissors":
+            return "✌";
+        default:
+            return choice;
+    }
+}
+
 function game() {
     const buttons = document.querySelectorAll("button");
     let result = new Counter();
     let scoreboard = document.querySelector(".score .counter");
     let roundResult = document.querySelector(".score .round-result");
     let gameResult = document.querySelector(".score .game-result");
+    let playerChoiceEmoji = document.querySelector(".round-results .player.emoji")
+    let botChoiceEmoji = document.querySelector(".round-results .bot.emoji")
 
     buttons.forEach(button => button.addEventListener('click', (event) => {
         let playerChoice = button.value;
-        result.decideRound(playerChoice, computerPlay());
+        let botChoice = computerPlay();
+        result.decideRound(playerChoice, botChoice);
+        
+        console.log(playerChoice);
+        console.log(strToEmoji(playerChoice));
+
+        playerChoiceEmoji.textContent = strToEmoji(playerChoice);
+        botChoiceEmoji.textContent = strToEmoji(botChoice);
 
         scoreboard.textContent = `${result.playerScore} : ${result.botScore}`;    
         roundResult.textContent = `${result.lastText}`;
